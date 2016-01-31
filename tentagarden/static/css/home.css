@@ -1,0 +1,80 @@
+* {
+	font-family: 'Open Sans', sans-serif;
+}
+
+body {
+	background-color: #EFEFEF;
+}
+
+.page-header {
+	margin: 0;
+    padding: 0;
+}
+
+.page-header h1 {
+	text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    font-weight: bold;
+    color: black;
+    line-height: 3.5;
+}
+
+h1#home {
+	text-align: center;
+    font-size: 48px;
+	font-weight: bold;
+}
+
+#myBtn {
+	background: none;
+    border: none;
+    color: #23527c;
+    cursor: pointer;
+}
+
+.panel {
+	width: 70%;
+    margin: 50px auto;
+}
+
+.panel h2 {
+	text-align: center;
+}
+
+.modal-dialog {
+    width: 35%;
+}
+
+.modal-header {
+	text-align: center;
+    padding: 0 0 15px;
+}
+
+.modal-content {
+	padding: 15px;
+}
+
+.btn-info {
+	width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.footer {
+	background-color: #696969;
+}
+
+.footer-container {
+    width: 26%;
+    display: block;
+    margin: 0 auto;
+}
+
+.footer ul {
+	display: inline-block;
+	list-style: none;
+	color: #fff;
+    margin: 20px auto;
+    font-size: 20px;
+}

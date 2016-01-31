@@ -1,0 +1,76 @@
+{% load static %}
+
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="{{ STATIC_URL }}parsley/js/parsley.js" ></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,600,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro|Open+Sans:300' rel='stylesheet' type='text/css'> 
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/home.css">
+	<link rel="stylesheet" href="{{ STATIC_URL }}js/basic-jquery-slider-master/bjqs.css">
+	<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+	
+	<!-- Include the plugin *after* the jQuery library -->
+	<script type="text/javascript" src="{{ STATIC_URL }}js/basic-jquery-slider-master/js/bjqs-1.3.min.js"></script>
+</head>
+
+<body>
+	
+	<div id="banner-fade">
+
+        <!-- start Basic Jquery Slider -->
+        <ul class="bjqs">
+          <li><img src="{{ STATIC_URL }}img/tent-1.jpg" title="Re-think your trips."></li>
+          <li><img src="{{ STATIC_URL }}img/tent-2.jpg" title="Low cost travels for everyone!"></li>
+          <li><img src="{{ STATIC_URL }}img/tent-3.jpg" title="Plant your tent in someone else's garden :)"></li>
+        </ul>
+        <!-- end Basic jQuery Slider -->
+        <a id="logo" href="/" title="Tent a garden"><img src="{{ STATIC_URL }}img/tent-a-garden-icon-1.png"></a>
+        {% if user.is_authenticated %}
+        <h1>Hello, {{ user.username }}!<br>
+        (Want to <a href="/logout/">Logout</a>?)</h1>
+        {% else %}
+        <h1>Hello, new user!</h1>
+        {% endif %}
+
+    </div>
+    
+    <script>
+      jQuery(document).ready(function($) {
+		  
+        $('#banner-fade').width('100%').bjqs({
+          responsive: true
+        });
+
+      });
+    </script>
+    
+	<div class="container">
+		<div class="panel panel-default">
+				{% block content %}
+				{% endblock %}
+		</div>
+	</div>
+	
+	<div class="footer">
+		<div class="footer-container">
+			<ul>
+				<li>About</li>
+				<li>Blog</li>
+				<li>Terms & Privacy</li>
+			</ul>
+			<ul>
+				<li>Why host</li>
+				<li>Hospitality</li>
+				<li>Site map</li>
+			</ul>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% extends "tentagarden/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="panel-body">
+	<h1 id="home">Pack up your bag and go!</h1>
+
+	{% if user.is_authenticated %}
+	
+	<h2>Welcome back, {{ user.username }}. Let's explore the World together!</h2>
+	
+	{% else %}
+  
+	<!-- Trigger the modal with a button -->
+	<h2><a id="subscribe_btn" class="btn_sub_log">Subscribe now :)</a></h2>
+  
+	<!-- Modal -->
+	<div class="modal fade" id="subscribe_modal" role="dialog">
+		<div class="modal-dialog">
+    
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title">Register with Tent a garden</h3>
+				</div>
+			<div class="modal-body">
+				
+			{% if registered %}
+        
+				<h4>Tent a garden says: <strong>thank you for registering!</strong></h4>
+				<a href="/">Return to the homepage.</a><br />
+				{% else %}
+						
+				<form data-parsley-validate id="user_form" method="post" action="" enctype="multipart/form-data">
+			
+					{% csrf_token %}
+				
+					{{ user_form.as_p }}
+					{{ profile_form.as_p }}
+				
+					<input type="submit" id="submit" class="btn btn-info" name="submit" value="Register" />
+				</form>
+			{% endif %}
+        </div>
+        <div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    
+    </div>
+    </div>
+    </div>
+  
+	<h2>Are you already a member? Then, <a id="login_btn"  class="btn_sub_log">login</a>!</h2>
+	
+	<!-- Modal -->
+	<div class="modal fade" id="login_modal" role="dialog">
+		<div class="modal-dialog">
+    
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title">Login with Tent a garden</h3>
+				</div>
+				<div class="modal-body">
+					<form id="login_form" method="POST" action="/login/">
+						{% csrf_token %}
+						<input type="text" name="username" class="form-control" value="" size="30" placeholder="Username" />
+						<br />
+						<input type="password" name="password" class="form-control" value="" size="30" placeholder="Password" />
+						<br />
+						
+						<input type="submit" value="Submit" class="btn btn-info" />
+					</form>
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+    </div>
+    </div>
+    
+	{% endif %}
+	
+<script>
+	$(document).ready(function(){
+		$("#subscribe_btn").click(function(){
+			$("#subscribe_modal").modal();
+		});
+	});
+	
+	$(document).ready(function(){
+		$("#login_btn").click(function(){
+			$("#login_modal").modal();
+		});
+	});
+</script>
+</div>
+
+{% endblock %}
